@@ -4,7 +4,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * Interface for all Dao classes
+ *
+ * @author Ekimovskiy Y.
+ *
+ * @param <E>
+ * @param <K>
+ */
 public interface ReadOnlyDao<E, K> {
+
     List<E> getAll();
 
     boolean existsById(K id);
