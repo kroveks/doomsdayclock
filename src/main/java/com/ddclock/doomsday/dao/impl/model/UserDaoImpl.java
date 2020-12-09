@@ -25,7 +25,6 @@ public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao
         String hql = "FROM User WHERE email = :email";
         TypedQuery<User> query = (TypedQuery<User>) entityManager.createQuery(hql).setParameter("email", email);
         return SingleResultUtil.getSingleResultOrNull(query);
-
     }
 
     @Override

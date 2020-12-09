@@ -29,7 +29,6 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
         entityManager.remove(e);
     }
 
-
     public void deleteById(K id) {
         Class<E> clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
@@ -82,13 +81,11 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
         }
     }
 
-
     public void deleteAll(Collection<E> entities) {
         for (E entity : entities) {
             entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
         }
     }
-
 
     public void updateAll(Iterable<? extends E> entities) {
         int i = 0;
