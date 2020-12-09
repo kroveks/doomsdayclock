@@ -23,10 +23,9 @@ public class TestDataInitService {
 
     final static int NUMBER_OF_USERS = 10;
     final static int NUMBER_OF_DICTIONARIES = 2;
-    final  int NUMBER_OF_WORDS = 100;
+    final static int NUMBER_OF_WORDS = 100;
 
 
-    List<Dictionary> dictionaryList = new ArrayList<>();
     Role USER_ROLE = Role.builder().name("USER").build();
     Role ADMIN_ROLE = Role.builder().name("ADMIN").build();
 
@@ -47,7 +46,6 @@ public class TestDataInitService {
             else user.setRole(USER_ROLE);
             userService.persist(user);
 
-
             Dictionary dictionary1 = Dictionary.builder().title("Dictionary_" + i).description("DescriptionDictionary_" + i).build();
             Dictionary dictionary2 = Dictionary.builder().title("Dictionary_2_" + i).description("DescriptionDictionary_2_" + i).build();
             List<Word> words = new ArrayList<>();
@@ -57,9 +55,9 @@ public class TestDataInitService {
             dictionary1.setWords(words);
             dictionary1.setWords(words);
 
-
             dictionary1.setUser(user);
             dictionary2.setUser(user);
+
 
             //dictionaryService.persist(dictionary);
         }

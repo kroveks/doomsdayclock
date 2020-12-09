@@ -18,7 +18,6 @@ public abstract class ReadOnlyDaoImpl<E, K> {
     private Class<E> clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
             .getActualTypeArguments()[0];
 
-
     public List<E> getAll() {
         return entityManager.createQuery("from " + clazz.getName()).getResultList();
     }
