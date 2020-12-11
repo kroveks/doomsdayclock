@@ -2,6 +2,15 @@ package com.ddclock.doomsday.dao.abstracts.model;
 
 import java.util.Collection;
 
+/**
+ * Interface interface expanding functionality of ReadOnlyDao
+ *
+ * @author Ekimovskiy Y.
+ *
+ * @param <E>
+ * @param <K>
+ */
+
 public interface ReadWriteDao<E, K> extends ReadOnlyDao<E, K> {
     void persist(E e);
 
