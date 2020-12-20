@@ -4,6 +4,7 @@ import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Role;
 import com.ddclock.doomsday.models.entity.User;
 import com.ddclock.doomsday.models.entity.Word;
+import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import com.ddclock.doomsday.service.abstracts.model.RoleService;
 import com.ddclock.doomsday.service.abstracts.model.UserService;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class TestDataInitService {
 
     final UserService userService;
     final RoleService roleService;
+    final DictionaryService dictionaryService;
 
 
     final static int NUMBER_OF_USERS = 10;
@@ -58,8 +60,8 @@ public class TestDataInitService {
             dictionary1.setUser(user);
             dictionary2.setUser(user);
 
-
-            //dictionaryService.persist(dictionary);
+            dictionaryService.persist(dictionary1);
+            dictionaryService.persist(dictionary2);
         }
     }
 }
