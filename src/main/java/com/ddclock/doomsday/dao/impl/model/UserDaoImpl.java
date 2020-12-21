@@ -34,4 +34,6 @@ public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao
                 .getResultList().stream().findFirst();
         return resultList;
     }
+    
+
 }

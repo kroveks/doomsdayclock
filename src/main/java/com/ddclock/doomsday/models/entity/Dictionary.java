@@ -47,7 +47,4 @@ public class Dictionary {
             inverseJoinColumns = @JoinColumn(name = "word_id"))
     private List<Word> words;
 
-
-
-
 }

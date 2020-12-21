@@ -4,8 +4,10 @@ import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Role;
 import com.ddclock.doomsday.models.entity.User;
 import com.ddclock.doomsday.models.entity.Word;
+import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import com.ddclock.doomsday.service.abstracts.model.RoleService;
 import com.ddclock.doomsday.service.abstracts.model.UserService;
+import com.ddclock.doomsday.service.abstracts.model.WordService;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,8 @@ public class TestDataInitService {
 
     final UserService userService;
     final RoleService roleService;
+    final DictionaryService dictionaryService;
+    final WordService wordService;
 
 
     final static int NUMBER_OF_USERS = 10;
@@ -47,19 +51,19 @@ public class TestDataInitService {
             userService.persist(user);
 
             Dictionary dictionary1 = Dictionary.builder().title("Dictionary_" + i).description("DescriptionDictionary_" + i).build();
-            Dictionary dictionary2 = Dictionary.builder().title("Dictionary_2_" + i).description("DescriptionDictionary_2_" + i).build();
             List<Word> words = new ArrayList<>();
-            for(int j = 0; j < NUMBER_OF_WORDS; j++) {
-                words.add(Word.builder().value("word" + i).exampleSentence("ex_sentence").translationValue("value").build());
-            }
-            dictionary1.setWords(words);
-            dictionary1.setWords(words);
 
+            Word word = new Word();
+            word.setValue("word " + i);
+            word.setExampleSentence("blah blah blah " + i);
+            word.setTranslationValue("anime vpered " + i);
+            wordService.persist(word);
+
+            words.add(word);
+
+            dictionary1.setWords(words);
             dictionary1.setUser(user);
-            dictionary2.setUser(user);
-
-
-            //dictionaryService.persist(dictionary);
+            dictionaryService.persist(dictionary1);
         }
     }
 }
