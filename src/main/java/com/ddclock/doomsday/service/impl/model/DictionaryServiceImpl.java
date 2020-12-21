@@ -28,5 +28,4 @@ public class DictionaryServiceImpl extends ReadWriteServiceImpl<Dictionary, Long
         return dictionaryDao.getDictionaryByTitle(title);
     }
 
-
 }
