@@ -1,7 +1,7 @@
 # doomsdayclock
 spaced-repetition learning web application
 
-## out setup
+## our setup
 java - 11,
 data-base - PostgreSQL
 plugins - Lambock, Thymeleaf, Swagger, MapStruct, SonarLint
