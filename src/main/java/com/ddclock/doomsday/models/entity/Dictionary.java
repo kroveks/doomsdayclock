@@ -41,10 +41,22 @@ public class Dictionary {
     private User user;
 
     @NotNull
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "dictionary_word",
             joinColumns = @JoinColumn(name = "dictionary_id"),
             inverseJoinColumns = @JoinColumn(name = "word_id"))
     private List<Word> words;
 
+
+    @Override
+    public String toString() {
+        return "Dictionary{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", persistDateTime=" + persistDateTime +
+                ", user=" + user +
+                ", words=" + words +
+                '}';
+    }
 }
