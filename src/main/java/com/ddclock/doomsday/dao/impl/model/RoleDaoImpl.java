@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 @Repository
-public class RoleDaoImpl extends ReadWriteDaoImpl<Role, String> implements RoleDao {
+public class RoleDaoImpl extends ReadWriteDaoImpl<Role, Long> implements RoleDao {
 
     private final EntityManager entityManager;
 

@@ -8,7 +8,7 @@ import java.util.Optional;
  * Interface extends all methods from ReadOnlyDao and ReadWriteDao
  * Interface declare some new methods
  */
-public interface RoleDao extends ReadWriteDao<Role, String> {
+public interface RoleDao extends ReadWriteDao<Role, Long> {
     /**
      * Uses role name to find role in dataBase.
      * @param name

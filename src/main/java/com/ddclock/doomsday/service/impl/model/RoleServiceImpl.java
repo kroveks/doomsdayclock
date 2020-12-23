@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class RoleServiceImpl extends ReadWriteServiceImpl<Role, String> implements RoleService {
+public class RoleServiceImpl extends ReadWriteServiceImpl<Role, Long> implements RoleService {
 
     private final RoleDao roleDao;
 

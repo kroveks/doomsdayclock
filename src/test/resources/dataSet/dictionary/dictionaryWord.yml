@@ -1,0 +1,9 @@
+dictionary_word:
+  - dictionary_id: "1"
+    word_id: "2"
+
+  - dictionary_id: "1"
+    word_id: "1"
+
+  - dictionary_id: "2"
+    word_id: "1"

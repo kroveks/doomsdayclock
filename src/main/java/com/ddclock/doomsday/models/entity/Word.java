@@ -40,4 +40,14 @@ public class Word {
     @ManyToMany(mappedBy = "words", fetch = FetchType.LAZY)
     private List<Dictionary> dictionaries;
 
+    @Override
+    public String toString() {
+        return "Word{" +
+                "id=" + id +
+                ", value='" + value + '\'' +
+                ", translationValue='" + translationValue + '\'' +
+                ", exampleSentence='" + exampleSentence + '\'' +
+                ", persistDateTime=" + persistDateTime +
+                '}';
+    }
 }
