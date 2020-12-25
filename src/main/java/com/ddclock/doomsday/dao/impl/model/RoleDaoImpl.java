@@ -13,16 +13,14 @@ import java.util.Optional;
 @Repository
 public class RoleDaoImpl extends ReadWriteDaoImpl<Role, Long> implements RoleDao {
 
-    private final EntityManager entityManager;
-
     public RoleDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
     @Override
     public Optional<Role> getRoleByName(String name) {
         String hql = "FROM Role WHERE name = :name";
-        TypedQuery<Role> query = (TypedQuery<Role>) entityManager.createQuery(hql).setParameter("name", name);
+        TypedQuery<Role> query = (TypedQuery<Role>) getEntityManager().createQuery(hql).setParameter("name", name);
         return SingleResultUtil.getSingleResultOrNull(query);
     }
 }

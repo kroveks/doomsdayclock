@@ -13,26 +13,24 @@ import java.util.Optional;
 @Repository
 public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao {
 
-    private final EntityManager entityManager;
 
     @Autowired
     public UserDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
     @Override
     public Optional<User> getUserByEmail(String email) {
         String hql = "FROM User WHERE email = :email";
-        TypedQuery<User> query = (TypedQuery<User>) entityManager.createQuery(hql).setParameter("email", email);
+        TypedQuery<User> query = (TypedQuery<User>) getEntityManager().createQuery(hql).setParameter("email", email);
         return SingleResultUtil.getSingleResultOrNull(query);
     }
 
     @Override
     public Optional<User> getUserByName(String name) {
-        Optional<User> resultList = (Optional<User>) entityManager.unwrap(Session.class)
+        return getEntityManager().unwrap(Session.class)
                 .createQuery("SELECT u FROM User as u WHERE lower(u.fullName) LIKE lower('%" + name + "%') ")
                 .getResultList().stream().findFirst();
-        return resultList;
     }
     
 

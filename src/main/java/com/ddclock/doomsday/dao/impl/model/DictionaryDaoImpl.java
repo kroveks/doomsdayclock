@@ -13,17 +13,16 @@ import java.util.Optional;
 @Repository
 public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implements DictionaryDao {
 
-    private final EntityManager entityManager;
 
     @Autowired
     public DictionaryDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
     @Override
     public Optional<Dictionary> getDictionaryByTitle(String title) {
         String hql = "FROM Dictionary WHERE title = :title";
-        TypedQuery<Dictionary> query = (TypedQuery<Dictionary>) entityManager.createQuery(hql).setParameter("title", title);
+        TypedQuery<Dictionary> query = (TypedQuery<Dictionary>) getEntityManager().createQuery(hql).setParameter("title", title);
         return SingleResultUtil.getSingleResultOrNull(query);
     }
 }

@@ -5,6 +5,10 @@ import java.util.Optional;
 
 
 public class SingleResultUtil {
+
+    private SingleResultUtil() {
+    }
+
     public static <T> Optional<T> getSingleResultOrNull(TypedQuery<T> var) {
         try {
             return Optional.of(var.getSingleResult());
