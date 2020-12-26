@@ -10,11 +10,9 @@ import javax.persistence.EntityManager;
 @Repository
 public class WordDaoImpl extends ReadWriteDaoImpl<Word, Long> implements WordDao {
 
-    private final EntityManager entityManager;
-
     @Autowired
     public WordDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
 }

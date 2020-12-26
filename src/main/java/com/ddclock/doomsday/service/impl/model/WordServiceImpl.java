@@ -9,11 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class WordServiceImpl extends ReadWriteServiceImpl<Word, Long> implements WordService {
 
-    private final WordDao wordDao;
-
     @Autowired
     public WordServiceImpl(WordDao wordDao) {
         super(wordDao);
-        this.wordDao = wordDao;
     }
 }

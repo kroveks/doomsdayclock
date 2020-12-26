@@ -19,23 +19,24 @@ import java.util.List;
 @Service
 public class TestDataInitService {
 
-    final UserService userService;
-    final RoleService roleService;
-    final DictionaryService dictionaryService;
-    final WordService wordService;
+    private final UserService userService;
+    private final RoleService roleService;
+    private final DictionaryService dictionaryService;
+    private final WordService wordService;
 
 
-    final static int NUMBER_OF_USERS = 10;
-    final static int NUMBER_OF_DICTIONARIES = 2;
-    final static int NUMBER_OF_WORDS = 100;
+    private final static int NUMBER_OF_USERS = 10;
+    private final static int NUMBER_OF_DICTIONARIES = 2;
+    private final static int NUMBER_OF_WORDS = 100;
 
 
-    Role USER_ROLE = Role.builder().name("USER").build();
-    Role ADMIN_ROLE = Role.builder().name("ADMIN").build();
+    private Role USER_ROLE = Role.builder().name("USER").build();
+    private Role ADMIN_ROLE = Role.builder().name("ADMIN").build();
 
 
     @Transactional
     public void createEntity() {
+
         roleService.persist(USER_ROLE);
         roleService.persist(ADMIN_ROLE);
         for (int i = 0; i < NUMBER_OF_USERS; i++) {

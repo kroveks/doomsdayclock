@@ -17,6 +17,10 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
     @PersistenceContext
     private EntityManager entityManager;
 
+    protected ReadWriteDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     public void persist(E e) {
         entityManager.persist(e);
     }
@@ -56,7 +60,6 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
             entityManager.flush();
             entityManager.clear();
         }
-
     }
 
     public void persistAll(Collection<E> entities) {
@@ -107,5 +110,9 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
             entityManager.flush();
             entityManager.clear();
         }
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 }

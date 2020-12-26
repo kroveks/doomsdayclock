@@ -11,7 +11,7 @@ public abstract class ReadOnlyServiceImpl<E, K>  {
 
     private final ReadOnlyDao<E, K> readOnlyDao;
 
-    public ReadOnlyServiceImpl(ReadOnlyDao<E, K> readOnlyDao) {
+    protected ReadOnlyServiceImpl(ReadOnlyDao<E, K> readOnlyDao) {
         this.readOnlyDao = readOnlyDao;
     }
 

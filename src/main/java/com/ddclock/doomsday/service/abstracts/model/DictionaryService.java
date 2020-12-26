@@ -1,7 +1,6 @@
 package com.ddclock.doomsday.service.abstracts.model;
 
 import com.ddclock.doomsday.models.entity.Dictionary;
-import com.ddclock.doomsday.models.entity.User;
 
 import java.util.Optional;
 
