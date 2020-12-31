@@ -1,18 +1,16 @@
 package com.ddclock.doomsday.models.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorldDto implements Serializable {
+public class WordDto implements Serializable {
     private Long id;
     private String value;
     private String translationValue;
