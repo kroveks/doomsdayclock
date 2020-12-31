@@ -13,7 +13,7 @@ plugins - Lambock, Thymeleaf, Swagger, MapStruct, SonarLint
 .make shure you add and enabe all plugins
 .run app
 
-##MapStruct config
+##  MapStruct config
 for MapStruct to work correctly, instruct Maven to perform a clean operation before each application launch. To do this,
  go to the application launch configuration settings (Run-> Edit Configurations) and add the Maven clean task in the 
  Before launch field (scroll to the very bottom of the window).
