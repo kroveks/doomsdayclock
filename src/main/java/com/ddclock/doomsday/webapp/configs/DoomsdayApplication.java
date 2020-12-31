@@ -15,6 +15,7 @@ public class DoomsdayApplication {
 
         SpringApplication.run(DoomsdayApplication.class, args);
 
+
     }
 
 }

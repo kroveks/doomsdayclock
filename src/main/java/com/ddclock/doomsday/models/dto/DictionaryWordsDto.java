@@ -16,5 +16,5 @@ public class DictionaryWordsDto {
     private String title;
     private String description;
     private int wordCount;
-    private List<WorldDto> worldDtoList;
+    private List<WordDto> wordDtoList;
 }

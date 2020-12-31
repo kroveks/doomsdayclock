@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WordSearchDot implements Serializable {
+public class WordSearchDto implements Serializable {
 
     @NotNull(message = "Поле не должно быть null")
     @NotBlank(message = "Поле не должно быть пустым")

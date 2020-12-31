@@ -17,5 +17,5 @@ public class UserWorldsDto implements Serializable {
     private Long id;
     private String email;
     private String fullName;
-    private List<WorldDto> worldDtoList;
+    private List<WordDto> wordDtoList;
 }
