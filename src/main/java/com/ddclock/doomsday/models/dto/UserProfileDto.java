@@ -17,8 +17,7 @@ public class UserProfileDto implements Serializable {
     private String fullName;
     private String password;
     private LocalDateTime persistDate;
-    private Long roleId;
-    private LocalDateTime lastRedactionDate;
+    private String roleName;
     private String email;
     private String about;
     private String city;

@@ -15,7 +15,7 @@ public abstract class ReadWriteDaoImpl<E, K> extends ReadOnlyDaoImpl<E, K> {
     private int batchSize;
 
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     protected ReadWriteDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;

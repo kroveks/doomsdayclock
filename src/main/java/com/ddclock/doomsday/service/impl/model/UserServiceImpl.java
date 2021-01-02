@@ -7,6 +7,7 @@ import com.ddclock.doomsday.service.abstracts.model.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -39,5 +40,11 @@ public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements
     public void persist(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         super.persist(user);
+    }
+
+    @Override
+    @Transactional
+    public void deleteWithDictionaryById(Long id){
+        userDao.deleteWithDictionaryById(id);
     }
 }
