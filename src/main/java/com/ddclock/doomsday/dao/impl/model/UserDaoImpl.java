@@ -32,6 +32,14 @@ public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao
                 .createQuery("SELECT u FROM User as u WHERE lower(u.fullName) LIKE lower('%" + name + "%') ")
                 .getResultList().stream().findFirst();
     }
-    
+
+    public void deleteWithDictionaryById(Long id) {
+        String hql1 = "delete from Dictionary as d WHERE d.user.id = :id";
+        entityManager.createQuery(hql1).setParameter("id", id).executeUpdate();
+
+        String hql = "DELETE User WHERE id = :id";
+        entityManager.createQuery(hql).setParameter("id", id).executeUpdate();
+    }
+
 
 }
