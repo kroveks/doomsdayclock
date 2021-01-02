@@ -26,6 +26,9 @@ public class UnitTestsForUserAndRoles extends AbstractIntegrationTest {
     @Autowired
     RoleService roleService;
 
+    @Autowired
+    DictionaryService dictionaryService;
+
     @Test
     void countGetAllUsersFromBD() {
         Assert.assertEquals(4, userService.getAll().size());
@@ -73,5 +76,18 @@ public class UnitTestsForUserAndRoles extends AbstractIntegrationTest {
         Assert.assertNotNull(roleService.getRoleByName("USER").get());
     }
 
+    @Test
+    void deleteUserById() {
+        dictionaryService.deleteById(2L);
+        userService.deleteById(2L);
+        Assert.assertEquals(3, userService.getAll().size());
+    }
+
+    @Test
+    void deleteWithDictionaryByIdTest() {
+        userService.deleteWithDictionaryById(1L);
+        Assert.assertEquals(3, userService.getAll().size());
+        Assert.assertEquals(3, dictionaryService.getAll().size());
+    }
 
 }
