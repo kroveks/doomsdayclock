@@ -26,7 +26,7 @@ users:
     role_id: 1
     id: 2
 
-  - email: "2020-04-04"
+  - email: "2020-04-05"
     password: "$2a$10$G.l/LUSaCNeNK3d5Bhm2KOJLF8aFynLFxiKirvrcJHwveXmcAXQcy"
     about: "description 2"
     full_name: "Tot"
