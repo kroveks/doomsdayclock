@@ -38,5 +38,4 @@ public class UserDtoServiceImpl implements UserDtoService {
     public List<UserDto> getAllUsers() {
         return userDtoDao.getAllUsers();
     }
-
 }
