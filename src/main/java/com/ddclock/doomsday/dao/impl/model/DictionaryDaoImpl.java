@@ -43,7 +43,7 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
 
         boolean noneMatch = words.stream()
                                .map(s -> s.getValue())
-                               .noneMatch(s -> s==newWordValue);
+                               .noneMatch(s -> s.equals(newWordValue));
 
         if(noneMatch) {
             words.add(word);
