@@ -23,5 +23,5 @@ public interface UserDao extends ReadWriteDao<User, Long> {
      */
     Optional<User> getUserByName(String name);
 
-    public void deleteWithDictionaryById(Long id);
+    void deleteWithDictionaryById(Long id);
 }
