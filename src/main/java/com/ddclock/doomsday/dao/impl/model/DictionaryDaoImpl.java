@@ -2,6 +2,7 @@ package com.ddclock.doomsday.dao.impl.model;
 
 import com.ddclock.doomsday.dao.abstracts.model.DictionaryDao;
 import com.ddclock.doomsday.dao.util.SingleResultUtil;
+import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
@@ -35,9 +36,6 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     @Override
     public List<Word> addWordToDictionary(Word word, Long id) {
         String newWordValue = word.getValue();
-        //сделать првоерку на null or "", почитать про Optional
-        //Подумать над тем, чтобыисключение кидать, которое будет вылетать если такое слово уже есть, чтобы как-то это ловить и говорить пользователю
-        // что он еблан
 
         List<Word> words = new ArrayList<>(dictionaryService.getById(id).get().getWords());
 
@@ -48,8 +46,8 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
         if(noneMatch) {
             words.add(word);
             return words;
+        }else {
+            throw new WordAlreadyExistInDictException("This word already exist in this dictionary");
         }
-
-        return words;
     }
 }

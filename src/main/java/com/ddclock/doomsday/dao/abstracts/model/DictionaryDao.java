@@ -19,6 +19,8 @@ public interface DictionaryDao extends ReadWriteDao<Dictionary, Long>{
      */
     Optional<Dictionary> getDictionaryByTitle(String title);
 
+
+    
     List<Word> addWordToDictionary(Word word, Long id);
 
 }
