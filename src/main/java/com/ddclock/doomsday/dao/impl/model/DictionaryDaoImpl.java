@@ -18,13 +18,12 @@ import java.util.Optional;
 @Repository
 public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implements DictionaryDao {
 
-    @Autowired
-    DictionaryService dictionaryService;
 
     @Autowired
     public DictionaryDaoImpl(EntityManager entityManager) {
         super(entityManager);
     }
+
 
     @Override
     public Optional<Dictionary> getDictionaryByTitle(String title) {
@@ -34,10 +33,10 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     }
 
     @Override
-    public List<Word> addWordToDictionary(Word word, Long id) {
+    public List<Word> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException{
         String newWordValue = word.getValue();
 
-        List<Word> words = new ArrayList<>(dictionaryService.getById(id).get().getWords());
+        List<Word> words = new ArrayList<>(getById(id).get().getWords());
 
         boolean noneMatch = words.stream()
                                .map(s -> s.getValue())

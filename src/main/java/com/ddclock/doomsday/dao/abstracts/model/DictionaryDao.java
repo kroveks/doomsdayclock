@@ -1,5 +1,6 @@
 package com.ddclock.doomsday.dao.abstracts.model;
 
+import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 
@@ -21,6 +22,6 @@ public interface DictionaryDao extends ReadWriteDao<Dictionary, Long>{
 
 
     
-    List<Word> addWordToDictionary(Word word, Long id);
+    List<Word> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException;
 
 }
