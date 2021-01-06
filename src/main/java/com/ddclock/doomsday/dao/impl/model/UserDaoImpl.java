@@ -13,7 +13,6 @@ import java.util.Optional;
 @Repository
 public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao {
 
-
     @Autowired
     public UserDaoImpl(EntityManager entityManager) {
         super(entityManager);
@@ -40,6 +39,4 @@ public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao
         String hql = "DELETE User WHERE id = :id";
         entityManager.createQuery(hql).setParameter("id", id).executeUpdate();
     }
-
-
 }

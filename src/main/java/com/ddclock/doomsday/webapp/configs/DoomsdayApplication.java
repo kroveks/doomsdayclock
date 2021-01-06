@@ -4,11 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @ComponentScan("com.ddclock.doomsday")
 @EntityScan("com.ddclock.doomsday.models.entity")
-//@EnableSwagger2
+@EnableSwagger2
 public class DoomsdayApplication {
 
     public static void main(String[] args) {
