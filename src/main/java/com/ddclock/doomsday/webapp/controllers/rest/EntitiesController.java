@@ -1,4 +1,4 @@
-package com.ddclock.doomsday.webapp.controllers;
+package com.ddclock.doomsday.webapp.controllers.rest;
 
 import com.ddclock.doomsday.models.dto.DictionaryDto;
 import com.ddclock.doomsday.models.dto.UserDto;
