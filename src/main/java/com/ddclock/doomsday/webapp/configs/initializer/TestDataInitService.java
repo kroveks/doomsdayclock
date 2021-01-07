@@ -1,4 +1,4 @@
-package com.ddclock.doomsday.service;
+package com.ddclock.doomsday.webapp.configs.initializer;
 
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Role;
@@ -9,14 +9,16 @@ import com.ddclock.doomsday.service.abstracts.model.RoleService;
 import com.ddclock.doomsday.service.abstracts.model.UserService;
 import com.ddclock.doomsday.service.abstracts.model.WordService;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Service
+@Component
 public class TestDataInitService {
 
     private final UserService userService;
@@ -34,7 +36,17 @@ public class TestDataInitService {
     private Role ADMIN_ROLE = Role.builder().name("ADMIN").build();
 
 
-    @Transactional
+    /**
+     * Основной метод для заполнения базы данных.
+     * Вызов методов добавлять в этод метод.
+     * Следить за последовательностью вызова.
+     */
+
+    //@PostConstruct //раскомментировать аннотацию при первом запуске проекта для создания таблиц БД, потом закомментировать
+    public void initDataBaseFilling() {
+        createEntity();
+    }
+
     public void createEntity() {
 
         roleService.persist(USER_ROLE);

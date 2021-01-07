@@ -1,6 +1,5 @@
 package com.ddclock.doomsday.webapp.configs.initializer;
 
-import com.ddclock.doomsday.service.TestDataInitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
