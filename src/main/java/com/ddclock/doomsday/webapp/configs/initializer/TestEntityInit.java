@@ -1,6 +1,5 @@
 package com.ddclock.doomsday.webapp.configs.initializer;
 
-import com.ddclock.doomsday.service.TestDataInitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -11,20 +10,7 @@ import org.springframework.stereotype.Component;
 @ConditionalOnMissingClass({"org.springframework.boot.test.context.SpringBootTest"})
 public class TestEntityInit implements CommandLineRunner {
 
-    private TestDataInitService testDataInitService;
-
-    @Value("${spring.jpa.hibernate.ddl-auto}")
-    private String ddlAuto;
-
-    @Autowired
-    public TestEntityInit(TestDataInitService testDataInitService) {
-        this.testDataInitService = testDataInitService;
-    }
-
     @Override
     public void run(String... args) {
-        if (ddlAuto.contains("create")) {
-            testDataInitService.createEntity();
-        }
     }
 }
