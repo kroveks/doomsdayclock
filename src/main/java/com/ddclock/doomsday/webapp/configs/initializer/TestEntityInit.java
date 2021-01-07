@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 @ConditionalOnMissingClass({"org.springframework.boot.test.context.SpringBootTest"})
 public class TestEntityInit implements CommandLineRunner {
 
-    private TestDataInitService testDataInitService;
+    private DataInit DataInit;
 
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String ddlAuto;
 
     @Autowired
-    public TestEntityInit(TestDataInitService testDataInitService) {
-        this.testDataInitService = testDataInitService;
+    public TestEntityInit(DataInit testDataInitService) {
+        this.DataInit = testDataInitService;
     }
 
     @Override
     public void run(String... args) {
         if (ddlAuto.contains("create")) {
-            testDataInitService.createEntity();
+            DataInit.createEntity();
         }
     }
 }

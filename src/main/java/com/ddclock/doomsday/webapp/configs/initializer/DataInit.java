@@ -19,7 +19,7 @@ import java.util.List;
 
 @Data
 @Component
-public class TestDataInitService {
+public class DataInit {
 
     private final UserService userService;
     private final RoleService roleService;
