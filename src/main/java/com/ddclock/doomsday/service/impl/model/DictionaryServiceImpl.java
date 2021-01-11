@@ -34,10 +34,10 @@ public class DictionaryServiceImpl extends ReadWriteServiceImpl<Dictionary, Long
      * Method that add new word to specific dictionary
      * @param word
      * @param id
-     * @return dictionary with new word, or exception, if word was already exist
+     * @return Optional(dictionary) with new word in wordsList, or exception, if word was already exist
      */
     @Override
-    public List<Word> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException {
+    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException {
 
         return dictionaryDao.addWordToDictionary(word, id);
     }

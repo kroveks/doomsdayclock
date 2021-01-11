@@ -1,8 +1,11 @@
 package com.ddclock.doomsday.service.impl.dto;
 
 import com.ddclock.doomsday.dao.abstracts.dto.DictionaryDtoDao;
+import com.ddclock.doomsday.dao.abstracts.model.DictionaryDao;
 import com.ddclock.doomsday.models.dto.DictionaryDto;
+import com.ddclock.doomsday.models.mappers.DictionaryMapper;
 import com.ddclock.doomsday.service.abstracts.dto.DictionaryDtoService;
+import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,11 @@ public class DictionaryDtoServiceImpl implements DictionaryDtoService {
     @Autowired
     DictionaryDtoDao dictionaryDtoDao;
 
+    @Autowired
+    DictionaryService dictionaryService;
+
+    @Autowired
+    DictionaryMapper dictionaryMapper;
 
 
     @Override
@@ -24,6 +32,11 @@ public class DictionaryDtoServiceImpl implements DictionaryDtoService {
 
     @Override
     public Optional<DictionaryDto> getDictionaryById(Long id) {
-        return dictionaryDtoDao.getDictionaryById(id);
+        return Optional.of(dictionaryMapper.DictionaryDtoFromDictionary(dictionaryService.getById(id).get()));
+    }
+
+    @Override
+    public Optional<DictionaryDto> getDictionaryByTitle(String title) {
+        return Optional.of(dictionaryMapper.DictionaryDtoFromDictionary(dictionaryService.getDictionaryByTitle(title).get()));
     }
 }

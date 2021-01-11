@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface DictionaryDtoService {
     List<DictionaryDto> getAll();
     Optional<DictionaryDto> getDictionaryById(Long id);
+    Optional<DictionaryDto> getDictionaryByTitle(String title);
 }

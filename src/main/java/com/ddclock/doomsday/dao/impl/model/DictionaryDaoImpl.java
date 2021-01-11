@@ -33,7 +33,7 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     }
 
     @Override
-    public List<Word> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException{
+    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException{
         String newWordValue = word.getValue();
 
         List<Word> words = new ArrayList<>(getById(id).get().getWords());
@@ -42,9 +42,15 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
                                .map(s -> s.getValue())
                                .noneMatch(s -> s.equals(newWordValue));
 
+        Optional<Dictionary> dictionaryObj = getById(id);
+
         if(noneMatch) {
             words.add(word);
-            return words;
+
+            Dictionary dictionary = dictionaryObj.get();
+            dictionary.setWords(words);
+
+            return Optional.of(dictionary);
         }else {
             throw new WordAlreadyExistInDictException("This word already exist in this dictionary");
         }
