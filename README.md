@@ -8,11 +8,14 @@ plugins - Lambock, Thymeleaf, Swagger, MapStruct, SonarLint
 
                                     
 ## initialization
-.clone project 
-.add postgreSQL to your IDE, set username-postgres, password-root, create DB named DoomsDay
-.create schema named public
-.make shure you add and enabe all plugins
-.run app
+clone project 
+add postgreSQL to your IDE, set username-postgres, password-root, create DB named DoomsDay
+create schema named public
+make shure you add and enabe all plugins
+
+In DataInit file and uncomment @PostConstruct for first filling DB, run app, make shure that DB has been initialized and comment @PostConstruct
+
+run app
 
 ##  MapStruct config
 for MapStruct to work correctly, instruct Maven to perform a clean operation before each application launch. To do this,
