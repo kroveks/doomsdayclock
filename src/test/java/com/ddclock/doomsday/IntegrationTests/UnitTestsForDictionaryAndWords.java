@@ -68,11 +68,13 @@ class UnitTestsForDictionaryAndWords extends AbstractIntegrationTest {
 
         int countOfWords = dictionaryService.getById(1l).get().getWords().size();
         //
-        List<Word> words = new ArrayList<>(dictionaryService.getById(1l).get().getWords());
-        words.add(wordService.getById(3l).get());
-        Dictionary dictionary = dictionaryService.getById(1l).get();
-        dictionary.setWords(words);
-        dictionaryService.update(dictionary);
+        try {
+            dictionaryService.addWordToDictionary(wordService.getById(3l).get(), 1l);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        dictionaryService.getById(1l).get().getWords().stream().forEach(word -> System.out.printf(word.getValue() + "111"));
         //
         Assert.assertEquals(++countOfWords, dictionaryService.getById(1l).get().getWords().size());
     }
