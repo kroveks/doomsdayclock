@@ -2,16 +2,15 @@ package com.ddclock.doomsday.dao.impl.model;
 
 import com.ddclock.doomsday.dao.abstracts.model.DictionaryDao;
 import com.ddclock.doomsday.dao.util.SingleResultUtil;
-import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
+import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
-import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,26 +32,32 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     }
 
     @Override
-    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException{
+    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException{
         String newWordValue = word.getValue();
-
-        List<Word> words = new ArrayList<>(getById(id).get().getWords());
-
-        boolean noneMatch = words.stream()
-                               .map(s -> s.getValue())
-                               .noneMatch(s -> s.equals(newWordValue));
-
         Optional<Dictionary> dictionaryObj = getById(id);
 
-        if(noneMatch) {
-            words.add(word);
-
+        if(dictionaryObj.isPresent()) {
             Dictionary dictionary = dictionaryObj.get();
-            dictionary.setWords(words);
 
-            return Optional.of(dictionary);
-        }else {
-            throw new WordAlreadyExistInDictException("This word already exist in this dictionary");
+            try {
+                List<Word> words = dictionary.getWords();
+                boolean noneMatch = words.stream()
+                        .map(s -> s.getValue())
+                        .noneMatch(s -> s.equals(newWordValue));
+
+                if(noneMatch) {
+                    words.add(word);
+                    dictionary.setWords(words);
+
+                    return Optional.of(dictionary);
+                }else {
+                    throw new WordAlreadyExistInDictException("This word already exist in this dictionary");
+                }
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+
         }
+        throw new DictionaryDoesNotExistException("Dictionary with " + id + " does not exist!");
     }
 }

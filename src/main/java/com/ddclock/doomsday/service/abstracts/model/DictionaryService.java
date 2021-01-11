@@ -1,10 +1,10 @@
 package com.ddclock.doomsday.service.abstracts.model;
 
-import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
+import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface DictionaryService extends ReadWriteService<Dictionary, Long>{
@@ -16,5 +16,5 @@ public interface DictionaryService extends ReadWriteService<Dictionary, Long>{
      */
     Optional<Dictionary> getDictionaryByTitle(String title);
 
-    Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException;
+    Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
 }

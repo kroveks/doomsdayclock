@@ -1,15 +1,14 @@
 package com.ddclock.doomsday.service.impl.model;
 
 import com.ddclock.doomsday.dao.abstracts.model.DictionaryDao;
-import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
+import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
-import org.hibernate.persister.walking.spi.WalkingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,13 +30,14 @@ public class DictionaryServiceImpl extends ReadWriteServiceImpl<Dictionary, Long
 
 
     /**
-     * Method that add new word to specific dictionary
+     * Method add new word to specific dictionary
+     * Throw and catch NULLPointerException if the word list is empty, be careful and check the console for stack trace
      * @param word
      * @param id
-     * @return Optional(dictionary) with new word in wordsList, or exception, if word was already exist
+     * @return Optional(dictionary) with new word in wordsList, or exceptions, if word was already exist or dictionary not found
      */
     @Override
-    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException {
+    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException {
 
         return dictionaryDao.addWordToDictionary(word, id);
     }
