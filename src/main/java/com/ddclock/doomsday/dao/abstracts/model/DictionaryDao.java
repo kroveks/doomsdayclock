@@ -1,10 +1,10 @@
 package com.ddclock.doomsday.dao.abstracts.model;
 
-import com.ddclock.doomsday.exception.WordAlreadyExistInDictException;
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
+import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,8 +20,5 @@ public interface DictionaryDao extends ReadWriteDao<Dictionary, Long>{
      */
     Optional<Dictionary> getDictionaryByTitle(String title);
 
-
-    
-    List<Word> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException;
-
+    Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
 }
