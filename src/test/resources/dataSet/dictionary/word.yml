@@ -3,22 +3,22 @@ word:
     translation_value: "translation of word1 value"
     value: "value of word1"
     persist_date: "2020-05-28 13:58:56"
-    id: 1  # <-- User Principal
+    id: 1
 
   - example_sentence: "word2"
     translation_value: "translation of word2 value"
     value: "value of word2"
     persist_date: "2020-05-28 13:58:56"
-    id: 2  # <-- User Principal
+    id: 2
 
   - example_sentence: "word3"
     translation_value: "translation of word3 value"
     value: "value of word3"
     persist_date: "2020-05-28 13:58:56"
-    id: 3 # <-- User Principal
+    id: 3
 
   - example_sentence: "word4"
     translation_value: "translation of word4 value"
     value: "value of word4"
     persist_date: "2020-05-28 13:58:56"
-    id: 4  # <-- User Principal
+    id: 4
