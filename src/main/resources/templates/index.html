@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link  href="/static/CSS/header.css" rel="stylesheet" type="text/css">
+    <title>DoomsDay</title>
 </head>
 <body>
     <div th:insert="~{fragment/header :: header}" class="fixed-top" ></div>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row min-vh-100 ">
 
             <!-- БОКОВАЯ ПАНЕЛЬ -->
@@ -15,8 +16,8 @@
 
                     <a class="btn btn-outline-primary mt-2 nav-link active" id="closedWordsToLearn-tab" role="tab">
                         В комментах к коду написал что тут</a>
-                    <!-- Пока хз как придумать там  отображение, кмк просто сделать на dociment.ready чтобы js отрисовывал что там и как
-                     Пока пусть будет просто место под это и все-->
+                    <!-- Пока хз как придумать там  отображение, кмк просто сделать на document.ready чтобы js отрисовывал что там и как
+                     Пока пусть будет просто место под это и все, там же наверное и засунуть навигацию по словарям-->
 
                 </div>
             </div>
@@ -53,13 +54,13 @@
                                                        class="form-control" required/>
                                             </div>
 
-                                            <div class="dropdown pull-left">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     В какой словарь добаввить
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a type="submit" class="dropdown-item" href="#">Action</a>
-                                                    <a type="submit" class="dropdown-item" href="#">Another action</a>   <!--Это для теста, по идее должно все из js подгружаться  -->
+           <!--!!!!!!!! -->                         <a type="submit" class="dropdown-item" href="#">Another action</a>   <!--Это для теста, по идее должно все из js подгружаться  -->
                                                 </div>
                                             </div>
                                         </form>
@@ -73,7 +74,6 @@
                 </div>
             </div>
             <!-- ОСНОВНАЯ  ПАНЕЛЬ  -->
-
 
         </div>
     </div>
