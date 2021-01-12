@@ -16,5 +16,5 @@ public interface DictionaryService extends ReadWriteService<Dictionary, Long>{
      */
     Optional<Dictionary> getDictionaryByTitle(String title);
 
-    Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
+    void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
 }

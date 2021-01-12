@@ -20,5 +20,5 @@ public interface DictionaryDao extends ReadWriteDao<Dictionary, Long>{
      */
     Optional<Dictionary> getDictionaryByTitle(String title);
 
-    Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
+    void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException;
 }
