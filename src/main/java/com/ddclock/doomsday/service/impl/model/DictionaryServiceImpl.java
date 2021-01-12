@@ -37,8 +37,8 @@ public class DictionaryServiceImpl extends ReadWriteServiceImpl<Dictionary, Long
      * @return Optional(dictionary) with new word in wordsList, or exceptions, if word was already exist or dictionary not found
      */
     @Override
-    public Optional<Dictionary> addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException {
+    public void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException {
 
-        return dictionaryDao.addWordToDictionary(word, id);
+        dictionaryDao.addWordToDictionary(word, id);
     }
 }

@@ -1,5 +1,7 @@
 package com.ddclock.doomsday.webapp.configs.initializer;
 
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
+import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Role;
 import com.ddclock.doomsday.models.entity.User;
@@ -42,10 +44,12 @@ public class DataInit {
      * Следить за последовательностью вызова.
      */
 
-    //@PostConstruct //раскомментировать аннотацию при первом запуске проекта для создания таблиц БД, потом закомментировать
+    //@PostConstruct//раскомментировать аннотацию при первом запуске проекта для создания таблиц БД, потом закомментировать
     public void initDataBaseFilling() {
         createEntity();
+      //  testForAddMethod();
     }
+
 
     public void createEntity() {
 
@@ -77,6 +81,24 @@ public class DataInit {
             dictionary1.setWords(words);
             dictionary1.setUser(user);
             dictionaryService.persist(dictionary1);
+
+        }
+
+
+    }
+
+    public void testForAddMethod() {
+        Word wordToTest = new Word();
+        wordToTest.setValue("testWord");
+        wordToTest.setExampleSentence("Nu cho pognaly nahuy");
+        wordToTest.setTranslationValue("Ebanniy v rot");
+        wordService.persist(wordToTest);
+
+        try {
+            dictionaryService.addWordToDictionary(wordToTest, 170L);
+        }catch (DictionaryDoesNotExistException | WordAlreadyExistInDictException e) {
+            System.out.println("Problemes");
         }
     }
+
 }
