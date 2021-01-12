@@ -8,6 +8,7 @@ import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -32,6 +33,7 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     }
 
     @Override
+    @Transactional
     public void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException{
         String newWordValue = word.getValue();
         Optional<Dictionary> dictionaryObj = getById(id);
@@ -48,7 +50,7 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
                 if(noneMatch) {
                     words.add(word);
                     dictionary.setWords(words);
-                    persist(dictionary);
+                    update(dictionary);
 
                 }else {
                     throw new WordAlreadyExistInDictException("This word already exist in this dictionary");
