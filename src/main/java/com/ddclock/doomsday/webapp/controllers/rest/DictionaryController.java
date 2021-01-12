@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -38,6 +39,7 @@ public class DictionaryController {
                         return ResponseEntity.badRequest().body("questionCreateDto.userId dont`t exist");
         }
         Dictionary dictionary = dictionaryMapper.DictionaryCreteDtoToDictionary(dictionaryCreateDto);
+        dictionary.setWords(new ArrayList<>());
 
         dictionaryService.persist(dictionary);
 
