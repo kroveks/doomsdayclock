@@ -6,8 +6,74 @@
 </head>
 <body>
     <div th:insert="~{fragment/header :: header}" class="fixed-top" ></div>
-    <div class="container-fluid">
-        <div class="row ">
+    <div class="container-fluid ">
+        <div class="row min-vh-100 ">
+
+            <!-- БОКОВАЯ ПАНЕЛЬ -->
+            <div class="row-md-2">
+                <div class="nav flex-column nav-pills mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                    <a class="btn btn-outline-primary mt-2 nav-link active" id="closedWordsToLearn-tab" role="tab">
+                        В комментах к коду написал что тут</a>
+                    <!-- Пока хз как придумать там  отображение, кмк просто сделать на dociment.ready чтобы js отрисовывал что там и как
+                     Пока пусть будет просто место под это и все-->
+
+                </div>
+            </div>
+            <!-- БОКОВАЯ ПАНЕЛЬ -->
+
+            <!-- ОСНОВНАЯ  ПАНЕЛЬ  -->
+            <div class="col-md-10" style="background: #edeef0">
+                <div class="tab-content" id="v-pills-tabContent">
+
+                    <!--ВКЛАДКА Главная страница  -->
+                    <div class="tab-pane fade show active col-12" id="mainPage" role="tabpanel"
+                         aria-labelledby="mainPage-tab">
+
+                        <div class="inner-wrapper">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-8 col-sm-offset-4">
+                                        <h2 class="text-center h4 mb-4">Введите слово, его перевод и предложение с этим словом</h2>
+                                        <form class="form-group clearfix">
+
+                                            <div class="form-group text-left font-weight-bold">
+                                                <label>Слово</label>
+                                                <input type="text" id="new_word" name="newWord" autofocus="autofocus"
+                                                       class="form-control" required>
+                                            </div>
+                                            <div class="form-group text-left font-weight-bold">
+                                                <label>Перевод</label>
+                                                <input type="text" id="word_translation" name="wordTranslation"
+                                                       class="form-control" required/>
+                                            </div>
+                                            <div class="form-group text-left font-weight-bold">
+                                                <label>Предложение, содержащее данное слово</label>
+                                                <input type="text" id="word_sentence" name="wordSentence"
+                                                       class="form-control" required/>
+                                            </div>
+
+                                            <div class="dropdown pull-left">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    В какой словарь добаввить
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a type="submit" class="dropdown-item" href="#">Action</a>
+                                                    <a type="submit" class="dropdown-item" href="#">Another action</a>   <!--Это для теста, по идее должно все из js подгружаться  -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ВКЛАДКА Главная пользователя  -->
+
+                </div>
+            </div>
+            <!-- ОСНОВНАЯ  ПАНЕЛЬ  -->
+
 
         </div>
     </div>
