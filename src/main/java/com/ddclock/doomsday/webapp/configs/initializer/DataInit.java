@@ -83,22 +83,5 @@ public class DataInit {
             dictionaryService.persist(dictionary1);
 
         }
-
-
     }
-
-    public void testForAddMethod() {
-        Word wordToTest = new Word();
-        wordToTest.setValue("testWord");
-        wordToTest.setExampleSentence("Nu cho pognaly nahuy");
-        wordToTest.setTranslationValue("Ebanniy v rot");
-        wordService.persist(wordToTest);
-
-        try {
-            dictionaryService.addWordToDictionary(wordToTest, 170L);
-        }catch (DictionaryDoesNotExistException | WordAlreadyExistInDictException e) {
-            System.out.println("Problemes");
-        }
-    }
-
 }

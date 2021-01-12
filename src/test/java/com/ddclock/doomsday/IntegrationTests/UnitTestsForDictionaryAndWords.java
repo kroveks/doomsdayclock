@@ -1,8 +1,8 @@
 package com.ddclock.doomsday.IntegrationTests;
 
 import com.ddclock.doomsday.AbstractIntegrationTest;
+import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
 import com.ddclock.doomsday.models.entity.Dictionary;
-import com.ddclock.doomsday.models.entity.Word;
 import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import com.ddclock.doomsday.service.abstracts.model.WordService;
 import com.github.database.rider.core.api.dataset.DataSet;
@@ -10,8 +10,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 @DataSet(value = {"dataset/user/user.yml",
@@ -63,20 +61,42 @@ class UnitTestsForDictionaryAndWords extends AbstractIntegrationTest {
     }
 
     @Test
-    //Need to write method in dao and service, method should do the same, and in test you just call this method.
     void testAddNewWordIntoDictionary() {
 
         int countOfWords = dictionaryService.getById(1l).get().getWords().size();
-        //
-        try {
+
+
+        //test when you try to add word in not existed dictionary
+        Assert.assertThrows(DictionaryDoesNotExistException.class, () -> {
+            dictionaryService.addWordToDictionary(wordService.getById(3l).get(), 5l);
+        });
+
+
+        Assert.assertThrows(DictionaryDoesNotExistException.class, () -> {
             dictionaryService.addWordToDictionary(wordService.getById(3l).get(), 1l);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        dictionaryService.getById(1l).get().getWords().stream().forEach(word -> System.out.printf(word.getValue() + "111"));
-        //
+        });
+
         Assert.assertEquals(++countOfWords, dictionaryService.getById(1l).get().getWords().size());
+    }
+
+    @Test
+    void testAddManyWordsIntoDictionary() {
+        int countOfWords = dictionaryService.getById(3l).get().getWords().size();
+
+
+        Assert.assertThrows(DictionaryDoesNotExistException.class, () -> {
+            dictionaryService.addWordToDictionary(wordService.getById(1l).get(), 3l);
+        });
+
+        Assert.assertThrows(DictionaryDoesNotExistException.class, () -> {
+            dictionaryService.addWordToDictionary(wordService.getById(2l).get(), 3L);
+        });
+
+        Assert.assertThrows(DictionaryDoesNotExistException.class, () -> {
+            dictionaryService.addWordToDictionary(wordService.getById(3l).get(), 3l);
+        });
+
+        Assert.assertEquals(countOfWords + 3, dictionaryService.getById(3l).get().getWords().size());
     }
 
 

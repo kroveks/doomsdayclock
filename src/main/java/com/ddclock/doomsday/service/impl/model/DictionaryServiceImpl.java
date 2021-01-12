@@ -8,6 +8,7 @@ import com.ddclock.doomsday.models.entity.Word;
 import com.ddclock.doomsday.service.abstracts.model.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -37,6 +38,7 @@ public class DictionaryServiceImpl extends ReadWriteServiceImpl<Dictionary, Long
      * @return Optional(dictionary) with new word in wordsList, or exceptions, if word was already exist or dictionary not found
      */
     @Override
+    @Transactional
     public void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException {
 
         dictionaryDao.addWordToDictionary(word, id);

@@ -33,7 +33,6 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
     }
 
     @Override
-    @Transactional
     public void addWordToDictionary(Word word, Long id) throws WordAlreadyExistInDictException, DictionaryDoesNotExistException{
         String newWordValue = word.getValue();
         Optional<Dictionary> dictionaryObj = getById(id);
