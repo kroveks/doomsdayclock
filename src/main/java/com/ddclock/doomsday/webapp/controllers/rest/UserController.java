@@ -88,12 +88,11 @@ public class UserController {
     }
 
     public ResponseEntity addUserRegistrationDto(@Valid @RequestBody UserRegistrationDto userRegistrationDto) {
-        if(!userService.existByEmail(userRegistrationDto.getEmail())) {
+        if(userService.existByEmail(userRegistrationDto.getEmail())) {
             return ResponseEntity.badRequest().body("User with " + userRegistrationDto.getEmail() + " already exist!");
         }
 
         User user = userMapper.userRegistrationDtoToUser(userRegistrationDto);
-
         userService.persist(user);
 
         return ResponseEntity.ok(userMapper.userToUserDto(user));
