@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+
+<body>
+<div th:fragment="dictionaryNavigation">
+    <div class="list-group">
+        <a href="#" id="dictionary1" class="list-group-item list-group-item-action tablinks active" onclick="openContent(id, 'wordList')">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Dictionary 1</h5>
+                <small>last update 3 days ago</small>
+            </div>
+            <div class="MyButtons">
+                <button type="button" id="addWordButton" class="btn btn-primary mr-0" onclick="sidebarButtonsEvent(id, 'addWord')">Добавить слово</button>
+                <button type="button" id="wordListButton" class="btn btn-primary float-right ml-0" onclick="sidebarButtonsEvent(id, 'wordList')">Список слов</button>
+            </div>
+        </a>
+        <a href="#" id="dictionary2" class="list-group-item list-group-item-action tablinks" onclick="openContent(id, 'wordList')">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Dictionary 2</h5>
+                <small>last update 5 days ago</small>
+            </div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
