@@ -27,4 +27,14 @@ public class DictionaryDtoDaoImpl implements DictionaryDtoDao {
                 " from Dictionary as d").getResultList();
     }
 
+    @Override
+    public List<DictionaryDto> getAllByUserId(long id) {
+
+        String query = "SELECT " +
+                "new com.ddclock.doomsday.models.dto.DictionaryDto(d.id, d.title, d.description, d.words.size)" +
+                " from Dictionary as d where d.user.id = " + id;
+
+        return entityManager.createQuery(query).getResultList();
+    }
+
 }

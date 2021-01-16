@@ -39,4 +39,9 @@ public class DictionaryDtoServiceImpl implements DictionaryDtoService {
     public Optional<DictionaryDto> getDictionaryByTitle(String title) {
         return Optional.of(dictionaryMapper.DictionaryDtoFromDictionary(dictionaryService.getDictionaryByTitle(title).get()));
     }
+
+    @Override
+    public List<DictionaryDto> getAllByUserId(long id) {
+        return dictionaryDtoDao.getAllByUserId(id);
+    }
 }

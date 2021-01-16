@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -80,4 +81,11 @@ public class DictionaryController {
                 ResponseEntity.badRequest().body("Dictionary with title - " + title + " not found");
     }
 
+    @GetMapping("user/{id}")
+    public ResponseEntity getAllDictionaryByUserId(@PathVariable long id) {
+        List<DictionaryDto> dictionaryDtos = dictionaryDtoService.getAllByUserId(id);
+
+        return dictionaryDtos != null ? ResponseEntity.ok().body(dictionaryDtos) :
+                ResponseEntity.badRequest().body("User with id - " + id + " not found");
+    }
 }
