@@ -10,4 +10,5 @@ public interface DictionaryDtoService {
     List<DictionaryDto> getAll();
     Optional<DictionaryDto> getDictionaryById(Long id);
     Optional<DictionaryDto> getDictionaryByTitle(String title);
+    List<DictionaryDto> getAllByUserId(long id);
 }

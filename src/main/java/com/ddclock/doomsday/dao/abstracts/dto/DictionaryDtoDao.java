@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface DictionaryDtoDao {
     List<DictionaryDto> getAll();
+    List<DictionaryDto> getAllByUserId(long id);
 }
