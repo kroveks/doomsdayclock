@@ -4,9 +4,11 @@ package com.ddclock.doomsday.webapp.controllers.rest;
 import com.ddclock.doomsday.models.dto.UserDto;
 import com.ddclock.doomsday.models.dto.UserProfileDto;
 import com.ddclock.doomsday.models.dto.UserRegistrationDto;
+import com.ddclock.doomsday.models.entity.Role;
 import com.ddclock.doomsday.models.entity.User;
 import com.ddclock.doomsday.models.mappers.UserMapper;
 import com.ddclock.doomsday.service.abstracts.dto.UserDtoService;
+import com.ddclock.doomsday.service.abstracts.model.RoleService;
 import com.ddclock.doomsday.service.abstracts.model.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +26,17 @@ public class UserController {
 
     private final UserService userService;
     private final UserDtoService userDtoService;
+    private final RoleService roleService;
     private static final int MAX_ITEMS_ON_PAGE = 100;
 
     @Autowired
     UserMapper userMapper;
 
     @Autowired
-    public UserController(UserService userService, UserDtoService userDtoService) {
+    public UserController(UserService userService, UserDtoService userDtoService, RoleService roleService) {
         this.userService = userService;
         this.userDtoService = userDtoService;
+        this.roleService = roleService;
     }
 
 
@@ -87,12 +91,17 @@ public class UserController {
         return ResponseEntity.badRequest().body("Something goes wrong");
     }
 
+    @PostMapping("registration")
     public ResponseEntity addUserRegistrationDto(@Valid @RequestBody UserRegistrationDto userRegistrationDto) {
         if(userService.existByEmail(userRegistrationDto.getEmail())) {
             return ResponseEntity.badRequest().body("User with " + userRegistrationDto.getEmail() + " already exist!");
         }
 
         User user = userMapper.userRegistrationDtoToUser(userRegistrationDto);
+
+        Role role = roleService.getRoleByName("USER").get();
+        user.setRole(role);
+
         userService.persist(user);
 
         return ResponseEntity.ok(userMapper.userToUserDto(user));
