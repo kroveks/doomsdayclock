@@ -24,4 +24,6 @@ public interface UserDao extends ReadWriteDao<User, Long> {
     Optional<User> getUserByName(String name);
 
     void deleteWithDictionaryById(Long id);
+
+    boolean existByEmail(String email);
 }

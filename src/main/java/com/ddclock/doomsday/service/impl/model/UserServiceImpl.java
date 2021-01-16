@@ -47,4 +47,9 @@ public class UserServiceImpl extends ReadWriteServiceImpl<User, Long> implements
     public void deleteWithDictionaryById(Long id){
         userDao.deleteWithDictionaryById(id);
     }
+
+    @Override
+    public boolean existByEmail(String email) {
+        return userDao.existByEmail(email);
+    }
 }

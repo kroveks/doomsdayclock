@@ -39,4 +39,10 @@ public class UserDaoImpl extends ReadWriteDaoImpl<User, Long> implements UserDao
         String hql = "DELETE User WHERE id = :id";
         entityManager.createQuery(hql).setParameter("id", id).executeUpdate();
     }
+
+    @Override
+    public boolean existByEmail(String email) {
+        long count = (long) entityManager.createQuery("SELECT COUNT(e) FROM User e WHERE e.email =: email").setParameter("email", email).getSingleResult();
+        return count > 0;
+    }
 }
