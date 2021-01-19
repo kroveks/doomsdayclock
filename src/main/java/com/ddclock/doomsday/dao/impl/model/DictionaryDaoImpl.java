@@ -8,7 +8,6 @@ import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -57,8 +56,9 @@ public class DictionaryDaoImpl extends ReadWriteDaoImpl<Dictionary, Long> implem
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-
         }
-        throw new DictionaryDoesNotExistException("Dictionary with " + id + " does not exist!");
+        else {
+            throw new DictionaryDoesNotExistException("Dictionary with id =" + id + " does not exist!");
+        }
     }
 }
