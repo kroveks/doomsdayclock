@@ -1,7 +1,6 @@
 package com.ddclock.doomsday.service.impl.dto;
 
 import com.ddclock.doomsday.dao.abstracts.dto.DictionaryDtoDao;
-import com.ddclock.doomsday.dao.abstracts.model.DictionaryDao;
 import com.ddclock.doomsday.models.dto.DictionaryDto;
 import com.ddclock.doomsday.models.mappers.DictionaryMapper;
 import com.ddclock.doomsday.service.abstracts.dto.DictionaryDtoService;

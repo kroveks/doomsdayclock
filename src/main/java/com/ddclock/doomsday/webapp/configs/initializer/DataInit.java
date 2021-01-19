@@ -1,7 +1,5 @@
 package com.ddclock.doomsday.webapp.configs.initializer;
 
-import com.ddclock.doomsday.exeptions.DictionaryDoesNotExistException;
-import com.ddclock.doomsday.exeptions.WordAlreadyExistInDictException;
 import com.ddclock.doomsday.models.entity.Dictionary;
 import com.ddclock.doomsday.models.entity.Role;
 import com.ddclock.doomsday.models.entity.User;
@@ -12,10 +10,7 @@ import com.ddclock.doomsday.service.abstracts.model.UserService;
 import com.ddclock.doomsday.service.abstracts.model.WordService;
 import lombok.Data;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +42,6 @@ public class DataInit {
     //@PostConstruct//раскомментировать аннотацию при первом запуске проекта для создания таблиц БД, потом закомментировать
     public void initDataBaseFilling() {
         createEntity();
-      //  testForAddMethod();
     }
 
 
