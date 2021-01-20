@@ -21,11 +21,10 @@ public abstract class UserMapper {
 
     public abstract User userDtoToUser(UserDto userDto);
 
-    @Mappings({
-        @Mapping(target="persistDate", source = "user.persistDateTime",
-                dateFormat = "dd-MM-yyyy HH:mm:ss"),
-        @Mapping( target = "roleName", source = "user.role.name"),
-        @Mapping( target = "isEnable", source = "user.isEnabled")})
+
+    @Mapping(target="persistDate", source = "user.persistDateTime", dateFormat = "dd-MM-yyyy HH:mm:ss")
+    @Mapping( target = "roleName", source = "user.role.name")
+    @Mapping( target = "isEnable", source = "user.isEnabled")
     public abstract UserProfileDto userToUserProfileDto (User user);
 
     public abstract User userRegistrationDtoToUser(UserRegistrationDto userRegistrationDto);

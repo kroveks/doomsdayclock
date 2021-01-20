@@ -48,7 +48,7 @@ public class DictionaryController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity getDictionaryById(@PathVariable Long id) {
+    public ResponseEntity<?> getDictionaryById(@PathVariable Long id) {
 
         Optional<DictionaryDto> dictionaryDto = dictionaryDtoService.getDictionaryById(id);
 
@@ -57,7 +57,7 @@ public class DictionaryController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity deleteDictionaryById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteDictionaryById(@PathVariable Long id) {
         Optional<Dictionary> dictionaryObj = dictionaryService.getById(id);
 
         if(dictionaryObj.isPresent()) {
@@ -74,7 +74,7 @@ public class DictionaryController {
     }
 
     @GetMapping("/title/{title}")
-    public ResponseEntity getDictionaryByTitle(@PathVariable String title) {
+    public ResponseEntity<?> getDictionaryByTitle(@PathVariable String title) {
         Optional<DictionaryDto> dictionaryDto = dictionaryDtoService.getDictionaryByTitle(title);
 
         return dictionaryDto.isPresent() ? ResponseEntity.ok().body(dictionaryDto.get()) :
@@ -82,7 +82,7 @@ public class DictionaryController {
     }
 
     @GetMapping("user/{id}")
-    public ResponseEntity getAllDictionaryByUserId(@PathVariable long id) {
+    public ResponseEntity<?> getAllDictionaryByUserId(@PathVariable long id) {
         List<DictionaryDto> dictionaryDtos = dictionaryDtoService.getAllByUserId(id);
 
         return dictionaryDtos != null ? ResponseEntity.ok().body(dictionaryDtos) :

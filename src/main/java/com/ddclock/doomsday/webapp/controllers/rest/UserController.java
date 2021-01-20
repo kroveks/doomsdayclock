@@ -92,7 +92,7 @@ public class UserController {
     }
 
     @PostMapping("registration")
-    public ResponseEntity addUserRegistrationDto(@Valid @RequestBody UserRegistrationDto userRegistrationDto) {
+    public ResponseEntity<?> addUserRegistrationDto(@Valid @RequestBody UserRegistrationDto userRegistrationDto) {
         if(userService.existByEmail(userRegistrationDto.getEmail())) {
             return ResponseEntity.badRequest().body("User with " + userRegistrationDto.getEmail() + " already exist!");
         }
