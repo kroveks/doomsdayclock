@@ -14,6 +14,11 @@ function sidebarButtonsEvent(evt, contentName) {
         tabcontent[i].style.display = "none";
     }
 
+    //Достаём у родителя родительского элемента кнопки айдишник словаря в БД (этот суперродительский эллемент это блок словаря выделенный синим)
+    var dictionaryId  = document.getElementById(evt).parentElement.parentElement.getAttribute("data-id")
+
+    document.getElementById("addButton").setAttribute("onclick", "addNewWord(3,"+ dictionaryId +")")
+
     //делает требуемый контент видимым
     document.getElementById(contentName).style.display = "block";
 }

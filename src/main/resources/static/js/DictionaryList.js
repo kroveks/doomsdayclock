@@ -29,9 +29,11 @@ function parseDictionary(userId) {
     dictionaryList(userId).then(function (response) {
         for (var i = 0; i < response.length; i++) {
 
-            console.log(response[0].title)
+            //номер айди словаря в базе данных, завёрнутый в строку чтоб легче вставлять
+            var DictionaryIdAttribute = "data-id = \"" + response[i].id + "\""
+
             $('#dictionaryList').append(
-                "<a href=\"#\" id=\"dictionary" + i + "\" class=\"list-group-item list-group-item-action tablinks\" onclick=\"openContent(id, 'wordList')\">\n" +
+                "<a href=\"#\" id=\"dictionary" + i + "\" "+ DictionaryIdAttribute + " class=\"list-group-item list-group-item-action tablinks\" onclick=\"openContent(id, 'wordList')\">\n" +
                 "    <div class=\"d-flex w-100 justify-content-between\">\n" +
                 "      <h5 class=\"mb-1\">"+ response[i].title + "</h5>\n" +
                 "      <small>last update 5 days ago</small>\n" +
