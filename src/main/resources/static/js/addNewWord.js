@@ -1,9 +1,9 @@
-function addNewWord() {
+function addNewWord(userId, dictionaryId) {
 
     let wordCreateDto = {
         value: $('#new_word').val(),
-        userId: 3,
-        dictionaryId: 5,
+        userId: userId,
+        dictionaryId: dictionaryId,
         translationValue: $('#word_translation').val(),
         exampleSentence: $('#word_sentence').val()
     };
